@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txtTr"
                 app:srcCompat="@drawable/ic_tick" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtTr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txtEn"
                 app:srcCompat="@drawable/ic_tick" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtEn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

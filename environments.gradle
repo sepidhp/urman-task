@@ -10,8 +10,8 @@ class EnvironmentItems {
 
 EnvironmentItems environments = new EnvironmentItems()
 
-environments.debug.baseURL = "https://jsonplaceholder.typicode.com/"
-environments.release.baseURL = "https://jsonplaceholder.typicode.com/"
+environments.debug.baseURL = "https://api.dev.buluro.com/"
+environments.release.baseURL = "https://api.dev.buluro.com/"
 
 
 

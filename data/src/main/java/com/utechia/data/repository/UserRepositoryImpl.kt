@@ -9,5 +9,8 @@ import javax.inject.Singleton
 @Singleton
 class UserRepositoryImpl @Inject constructor(private val dataSource: UserDataSource) :
     UserRepository {
-    override suspend fun getExchanges(): Result<List<Exchange>> =  dataSource.getExchanges()
+    override suspend fun getGuestToken(userType: String, uniqueId: String): Result<String> =
+        dataSource.getGuestToken(userType, uniqueId)
+
+    override suspend fun getExchanges(): Result<List<Exchange>> = dataSource.getExchanges()
 }

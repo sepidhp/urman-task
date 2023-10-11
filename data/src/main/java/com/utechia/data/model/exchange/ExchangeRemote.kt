@@ -1,4 +1,4 @@
-package com.utechia.data.model
+package com.utechia.data.model.exchange
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
@@ -56,107 +56,149 @@ data class ExchangeRemote(
         Exchange(
             usdTry.value,
             usdTry.sortId,
-            ExchangesName.USD_TRY.name
+            ExchangesName.USD_TRY.name,
+            null,
+            null
         ),
         Exchange(
             eurTry.value,
             eurTry.sortId,
-            ExchangesName.EUR_TRY.name
+            ExchangesName.EUR_TRY.name,
+            null,
+            null
         ),
         Exchange(
             eurUsd.value,
             eurUsd.sortId,
-            ExchangesName.EUR_USD.name
+            ExchangesName.EUR_USD.name,
+            null,
+            null
         ),
         Exchange(
             goldOns.value,
             goldOns.sortId,
-            ExchangesName.GOLD_ONS.name
+            ExchangesName.GOLD_ONS.name,
+            null,
+            null
         ),
         Exchange(
             goldTry.value,
             goldTry.sortId,
-            ExchangesName.GOLD_TRY.name
+            ExchangesName.GOLD_TRY.name,
+            null,
+            null
         ),
         Exchange(
             goldKgUsd.value,
             goldKgUsd.sortId,
-            ExchangesName.GOLD_KG_USD.name
+            ExchangesName.GOLD_KG_USD.name,
+            null,
+            null
         ),
         Exchange(
             goldKgEur.value,
             goldKgEur.sortId,
-            ExchangesName.GOLD_KG_EUR.name
+            ExchangesName.GOLD_KG_EUR.name,
+            null,
+            null
         ),
         Exchange(
             silverOns.value,
             silverOns.sortId,
-            ExchangesName.SILVER_ONS.name
+            ExchangesName.SILVER_ONS.name,
+            null,
+            null
         ),
         Exchange(
             silverTry.value,
             silverTry.sortId,
-            ExchangesName.SILVER_TRY.name
+            ExchangesName.SILVER_TRY.name,
+            null,
+            null
         ),
         Exchange(
             oldQuarter.value,
             oldQuarter.sortId,
-            ExchangesName.OLD_QUARTER.name
+            ExchangesName.OLD_QUARTER.name,
+            null,
+            null
         ),
         Exchange(
             newQuarter.value,
             newQuarter.sortId,
-            ExchangesName.NEW_QUARTER.name
+            ExchangesName.NEW_QUARTER.name,
+            null,
+            null
         ),
         Exchange(
             oldHalf.value,
             oldHalf.sortId,
-            ExchangesName.OLD_HALF.name
+            ExchangesName.OLD_HALF.name,
+            null,
+            null
         ),
         Exchange(
             newHalf.value,
             newHalf.sortId,
-            ExchangesName.NEW_HALF.name
+            ExchangesName.NEW_HALF.name,
+            null,
+            null
         ),
         Exchange(
             oldComplete.value,
             oldComplete.sortId,
-            ExchangesName.OLD_COMPLETE.name
+            ExchangesName.OLD_COMPLETE.name,
+            null,
+            null
         ),
         Exchange(
             newComplete.value,
             newComplete.sortId,
-            ExchangesName.NEW_COMPLETE.name
+            ExchangesName.NEW_COMPLETE.name,
+            null,
+            null
         ),
         Exchange(
             oldAta.value,
             oldAta.sortId,
-            ExchangesName.OLD_ATA.name
+            ExchangesName.OLD_ATA.name,
+            null,
+            null
         ),
         Exchange(
             newAta.value,
             newAta.sortId,
-            ExchangesName.NEW_ATA.name
+            ExchangesName.NEW_ATA.name,
+            null,
+            null
         ),
         Exchange(
             oldGremese.value,
             oldGremese.sortId,
-            ExchangesName.OLD_GREMESE.name
+            ExchangesName.OLD_GREMESE.name,
+            null,
+            null
         ),
         Exchange(
             newGremese.value,
             newGremese.sortId,
-            ExchangesName.NEW_GREMESE.name
+            ExchangesName.NEW_GREMESE.name,
+            null,
+            null
         ),
         Exchange(
             oldAta5.value,
             oldAta5.sortId,
-            ExchangesName.OLD_ATA_5.name
+            ExchangesName.OLD_ATA_5.name,
+            null,
+            null
         ),
         Exchange(
             newAta5.value,
             newAta5.sortId,
-            ExchangesName.NEW_ATA_5.name
+            ExchangesName.NEW_ATA_5.name,
+            null,
+            null
         )
     )
 }

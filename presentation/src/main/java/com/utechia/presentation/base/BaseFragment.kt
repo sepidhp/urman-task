@@ -14,7 +14,6 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
     @LayoutRes private val resId: Int
 ) : Fragment() {
 
-
     lateinit var binding: VDB
 
     override fun onCreateView(
@@ -26,7 +25,6 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
             inflater, resId, container, false
         )
         return binding.root
-        //return inflater.inflate(resId, container, false)
     }
 
     fun <T> LiveData<T>.observe(observer: (T) -> Unit) {
@@ -34,6 +32,4 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
             it?.let { observer(it) }
         })
     }
-
-
 }

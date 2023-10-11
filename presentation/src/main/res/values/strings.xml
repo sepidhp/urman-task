@@ -2,7 +2,17 @@
     <string name="app_name">Urman Task</string>
     <string name="posts">Posts</string>
     <string name="re_try">Retry</string>
-    <string name="work">iş</string>
+    <string name="open_account">Sözer Kuyumculuk AŞ</string>
     <string name="buluro">BULURO</string>
-    <string name="equipment">BULURO</string>
+    <string name="work"><b>iş</b>\nBULURO</string>
+    <string name="equipment"><b>EKIPMAN</b>\nBULURO</string>
+    <string name="fair"><b>FUAR</b>\nBULURO</string>
+    <string name="guide"><b>REHBER</b>\nBULURO</string>
+    <string name="foreign_currency"><b>DÖVİZ</b> BULURO</string>
+    <string name="magazine"><b>DERGİ</b> BULURO</string>
+    <string name="real_estate"><b>EMLAK</b> BULURO</string>
+    <string name="jewelery">KYUMCULUK</string>
+    <string name="soon">YAKINDA!</string>
+    <string name="tr">TR</string>
+    <string name="en">EN</string>
 </resources>

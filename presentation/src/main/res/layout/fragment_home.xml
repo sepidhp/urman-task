@@ -1,19 +1,465 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="loadingHasError"
+            type="Boolean" />
+
+        <variable
+            name="clickHandler"
+            type="com.utechia.presentation.exchanges.HomeFragment.ClickHandler" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:background="@drawable/bg_gradient_left_bottom_round"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cnsHeader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_rect_solid_gradient_left_bottom_32_round"
+            app:layout_constraintDimensionRatio="H,3:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imgLines"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@id/cnsHeader"
+                app:layout_constraintEnd_toEndOf="@id/cnsHeader"
+                app:layout_constraintStart_toStartOf="@id/cnsHeader"
+                app:layout_constraintTop_toTopOf="@id/cnsHeader"
+                app:srcCompat="@drawable/ic_lines" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_search" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                app:layout_constraintTop_toTopOf="@id/imgMan"
+                app:srcCompat="@drawable/ic_buluro" />
+
+            <ImageView
+                android:id="@+id/imgMan"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@+id/cnsAccount"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/man_vector" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rect_outline_white_24_round"
+                android:paddingStart="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                android:paddingBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cnsChangeLanguage"
+                app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+                app:layout_constraintTop_toTopOf="@+id/cnsChangeLanguage">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/open_account"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toStartOf="@+id/textView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView"
+                    app:srcCompat="@drawable/ic_profile" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imgVerify"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:padding="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cnsAccount"
+                app:layout_constraintEnd_toEndOf="@+id/cnsAccount"
+                app:layout_constraintStart_toEndOf="@id/cnsAccount"
+                app:layout_constraintTop_toTopOf="@+id/cnsAccount"
+                app:srcCompat="@drawable/ic_verify" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cnsChangeLanguage"
+                app:layout_constraintEnd_toStartOf="@+id/cnsChangeLanguage"
+                app:layout_constraintTop_toTopOf="@+id/cnsChangeLanguage"
+                app:srcCompat="@drawable/ic_notification" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsChangeLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="@{clickHandler::onLanguageButtonClicked}"
+                android:padding="6dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgArrow"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/txtLanguage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/txtLanguage"
+                    app:srcCompat="@drawable/ic_arrow_bottom" />
+
+                <TextView
+                    android:id="@+id/txtLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/tr"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imgArrow"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txtJewelery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rect_solid_gradient_4_round"
+            android:fontFamily="@font/montserrat_light"
+            android:padding="6dp"
+            android:text="@string/jewelery"
+            android:textColor="@color/whiteColor"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/cnsHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cnsHeader" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtJewelery">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_sharp_vector" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsWork"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                app:layout_constraintEnd_toStartOf="@+id/txtEquipment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgWork"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/work" />
+
+                <TextView
+                    android:id="@+id/txtWork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="@string/work"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txtEquipment"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                android:fontFamily="@font/montserrat_light"
+                android:gravity="center|start"
+                android:paddingStart="16dp"
+                android:text="@string/equipment"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cnsWork"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/txtEquipment"
+                app:layout_constraintEnd_toEndOf="@+id/txtEquipment"
+                app:srcCompat="@drawable/equipment" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                android:clipToPadding="false"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                app:layout_constraintTop_toBottomOf="@id/cnsWork">
+
+                <TextView
+                    android:id="@+id/txtCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="@string/foreign_currency"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/doviz_vector"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtCurrency"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtCurrency" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvExchanges"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCurrency" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cnsFair"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                app:layout_constraintEnd_toStartOf="@+id/txtGuide"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                app:layout_constraintTop_toBottomOf="@+id/cnsSlider">
+
+                <TextView
+                    android:id="@+id/txtFair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="@string/fair"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imgFair"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="@id/cnsFair"
+                app:layout_constraintTop_toTopOf="@id/cnsFair"
+                app:srcCompat="@drawable/fair" />
+
+            <TextView
+                android:id="@+id/txtGuide"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                android:fontFamily="@font/montserrat_light"
+                android:gravity="center|start"
+                android:paddingStart="16dp"
+                android:text="@string/guide"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cnsFair"
+                app:layout_constraintTop_toBottomOf="@+id/cnsSlider" />
+
+            <ImageView
+                android:id="@+id/imgGuide"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/txtGuide"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtGuide"
+                app:srcCompat="@drawable/guide" />
+
+            <TextView
+                android:id="@+id/txtMagazine"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                android:fontFamily="@font/montserrat_light"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/magazine"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/txtRealEstate"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                app:layout_constraintTop_toBottomOf="@+id/imgFair" />
+
+            <TextView
+                android:id="@+id/txtRealEstate"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_rect_solid_gradient_grey_16_round"
+                android:fontFamily="@font/montserrat_light"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/real_estate"
+                android:textColor="@color/whiteColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txtMagazine"
+                app:layout_constraintTop_toBottomOf="@+id/imgFair" />
+
+            <TextView
+                android:id="@+id/txtSoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rect_solid_gradient_4_round"
+                android:fontFamily="@font/montserrat_light"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:text="@string/soon"
+                android:textColor="@color/whiteColor"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtRealEstate"
+                app:layout_constraintEnd_toEndOf="@+id/txtRealEstate"
+                app:layout_constraintStart_toStartOf="@+id/txtRealEstate"
+                app:layout_constraintTop_toTopOf="@+id/txtRealEstate" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRight2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLeft2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

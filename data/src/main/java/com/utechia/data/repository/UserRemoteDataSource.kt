@@ -3,9 +3,7 @@ package com.utechia.data.repository
 import com.google.gson.Gson
 import com.utechia.data.api.ApiService
 import com.utechia.data.exceptions.NetworkExceptionHandler
-import com.utechia.data.model.ExchangeRemote
 import com.utechia.domain.model.*
-import com.utechia.domain.util.ExchangesName
 import javax.inject.Inject
 import javax.inject.Singleton
 import com.utechia.domain.util.Result
@@ -16,10 +14,19 @@ class UserRemoteDataSource @Inject constructor(
     private val apiExceptionHandler: NetworkExceptionHandler,
     private val gson: Gson
 ) : UserDataSource {
+    override suspend fun getGuestToken(userType: String, uniqueId: String): Result<String> {
+        return try {
+            val result = apiService.fetchGuestToken(userType, uniqueId)
+            Result.Success(result.data)
+        } catch (e: java.lang.Exception) {
+            Result.Error(apiExceptionHandler.traceErrorException(e))
+        }
+    }
+
     override suspend fun getExchanges(): Result<List<Exchange>> {
         return try {
             val result = apiService.fetchExchanges()
-            Result.Success(result.toDomain())
+            Result.Success(result.data.translates.en.toDomain())
         } catch (e: java.lang.Exception) {
             Result.Error(apiExceptionHandler.traceErrorException(e))
         }

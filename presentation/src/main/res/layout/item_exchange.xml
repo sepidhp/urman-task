@@ -5,32 +5,85 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="exchange"
             type="com.utechia.domain.model.Exchange" />
+
+        <variable
+            name="position"
+            type="int" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="122dp"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="0.5dp"
+            android:layout_height="0dp"
+            android:background="@color/whiteColor"
+            android:visibility="@{position==0?View.INVISIBLE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/txtSellPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
+            android:id="@+id/txtName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:fontFamily="@font/gilroy_bold"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/montserrat_light"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:text="@{exchange.name}"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="16sp" />
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintTop_toTopOf="@id/vDivider"
+            tools:text="Altin ONS" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginVertical="8dp"
-            android:src="@color/dividerColor" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtBuyPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/montserrat_light"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{@string/buy_price_with_value(exchange.buyPrice)}"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            tools:text="ALlŞ: 1.648,09" />
 
-    </LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtSellPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/montserrat_light"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingBottom="12dp"
+            android:singleLine="true"
+            android:text="@{@string/sell_price_with_value(exchange.sellPrice)}"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintTop_toBottomOf="@id/txtBuyPrice"
+            tools:text="SATIŞ: 1.648,31" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

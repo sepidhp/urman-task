@@ -17,6 +17,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.socket.client.IO
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -33,6 +34,12 @@ class AppModule {
     @Provides
     @Singleton
     fun gson(): Gson = GsonBuilder().create()
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(context: Application): SharedPreferences {
+        return context.getSharedPreferences(Constants.TAG, MODE_PRIVATE)
+    }
 
     @Provides
     @Singleton
@@ -59,7 +66,5 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(context: Application): SharedPreferences {
-        return context.getSharedPreferences(Constants.TAG, MODE_PRIVATE)
-    }
+    fun provideSocket() = IO.socket("https://exchange.dev.buluro.com/")
 }

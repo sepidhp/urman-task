@@ -33,11 +33,9 @@ class BaseHttpClient @Inject constructor(
         .build()
 
     private fun headersInterceptor() = Interceptor { chain ->
-        val token = sharedPreferences.getString(Constants.TOKEN, "")
-        chain.proceed(
-            chain.request().newBuilder()
-                .addHeader("authorization", "Bearer $token")
-                .build()
-        )
+        val token = sharedPreferences.getString(Constants.TOKEN, null)
+        val newRequest = chain.request().newBuilder()
+        newRequest.header("Authorization", "Bearer $token")
+        chain.proceed(newRequest.build())
     }
 }

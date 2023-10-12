@@ -1,16 +1,11 @@
 package com.utechia.presentation.exchanges
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
 import android.widget.PopupWindow
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.utechia.domain.model.Exchange
@@ -28,36 +23,48 @@ class HomeFragment :
     BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel: ExchangeViewModel by viewModels()
     private val clickHandler = ClickHandler(this)
-    private val exchangeAdapter = ExchangeAdapter()
+    private val exchangeAdapter by lazy { ExchangeAdapter(requireActivity()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupObservers()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setStatusBarGradiant(requireActivity())
         setupUI()
     }
 
     private fun setupObservers() {
         viewModel.run {
+            observe(getToken(), ::initToken)
+            observe(getSocketException(), ::initSocketException)
+            observe(getExchangeNames(), ::initExchangeNames)
             observe(getExchanges(), ::initExchanges)
         }
     }
 
-    private fun initExchanges(result: Result<List<Exchange>>?) {
+    private fun initToken(result: Result<String>) {
+        if (result is Result.Error) {
+            showRetry(true)
+            showLoading(false)
+            result.error.message?.let {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
+        } else if (result is Result.Loading) {
+            showLoading(result.loading)
+        }
+    }
+
+    private fun initSocketException(exception: Exception) {
+        showRetry(true)
+        showLoading(false)
+    }
+
+    private fun initExchangeNames(result: Result<List<Exchange>>?) {
         if (result is Result.Success) {
-            updateList(result.data)
+            viewModel.listenPriceEvent(result.data)
+            viewModel.connectSocket()
         } else if (result is Result.Error) {
             if (result.error.status == HttpErrors.Unauthorized) {
                 //handle expired token
@@ -72,6 +79,10 @@ class HomeFragment :
         } else if (result is Result.Loading) {
             showLoading(result.loading)
         }
+    }
+
+    private fun initExchanges(result: List<Exchange>) {
+        updateList(result)
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -89,10 +100,9 @@ class HomeFragment :
     }
 
     private fun setupUI() {
-        val snapHelper = LinearSnapHelper()
         binding.rvExchanges.apply {
             adapter = exchangeAdapter
-            snapHelper.attachToRecyclerView(this)
+            LinearSnapHelper().attachToRecyclerView(this)
         }
         binding.clickHandler = clickHandler
     }
@@ -121,14 +131,8 @@ class HomeFragment :
         }
     }
 
-    private fun setStatusBarGradiant(activity: Activity) {
-        val window: Window = activity.window
-        val background =
-            ContextCompat.getDrawable(activity, R.drawable.bg_rect_solid_gradient_flat)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-        window.statusBarColor = ContextCompat.getColor(activity, android.R.color.transparent)
-        window.navigationBarColor = ContextCompat.getColor(activity, android.R.color.transparent)
-        window.setBackgroundDrawable(background)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.disconnectSocket()
     }
 }

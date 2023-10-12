@@ -46,6 +46,10 @@ dependencies {
     implementation "javax.inject:javax.inject:$javaxInjectVersion"
     //parser
     api "com.squareup.retrofit2:converter-gson:$gsonVersion"
+    // io socket
+    implementation ('io.socket:socket.io-client:2.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 }
 kapt {
     correctErrorTypes true

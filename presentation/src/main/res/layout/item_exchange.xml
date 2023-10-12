@@ -14,73 +14,70 @@
         <variable
             name="position"
             type="int" />
+
+        <variable
+            name="size"
+            type="int" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="122dp"
-        android:layout_height="wrap_content">
+        android:id="@+id/cnsRoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp">
 
         <View
             android:id="@+id/vDivider"
             android:layout_width="0.5dp"
             android:layout_height="0dp"
             android:background="@color/whiteColor"
-            android:visibility="@{position==0?View.INVISIBLE:View.VISIBLE}"
+            android:visibility="@{position==size-1?View.INVISIBLE:View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@id/txtSellPrice"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtName"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="6dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:text="@{exchange.name}"
-            android:textIsSelectable="true"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/vDivider"
             tools:text="Altin ONS" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtBuyPrice"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="2dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:text="@{@string/buy_price_with_value(exchange.buyPrice)}"
-            android:textIsSelectable="true"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtName"
             tools:text="ALlŞ: 1.648,09" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtSellPrice"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
             android:marqueeRepeatLimit="marquee_forever"
             android:paddingBottom="12dp"
             android:singleLine="true"
             android:text="@{@string/sell_price_with_value(exchange.sellPrice)}"
-            android:textIsSelectable="true"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/vDivider"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtBuyPrice"
             tools:text="SATIŞ: 1.648,31" />
 

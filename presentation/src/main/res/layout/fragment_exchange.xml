@@ -16,7 +16,7 @@
 
         <variable
             name="clickHandler"
-            type="com.utechia.presentation.exchanges.HomeFragment.ClickHandler" />
+            type="com.utechia.presentation.exchanges.ExchangeFragment.ClickHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

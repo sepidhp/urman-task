@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/exchangeFragment"
-        android:name="com.utechia.presentation.exchanges.HomeFragment"
-        tools:layout="@layout/fragment_home"
+        android:name="com.utechia.presentation.exchanges.ExchangeFragment"
+        tools:layout="@layout/fragment_exchange"
         android:label="ExchangeFragment" />
 
 </navigation>

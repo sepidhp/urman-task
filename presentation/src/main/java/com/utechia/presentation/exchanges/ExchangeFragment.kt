@@ -13,14 +13,14 @@ import com.utechia.domain.util.HttpErrors
 import com.utechia.domain.util.Result
 import com.utechia.presentation.R
 import com.utechia.presentation.base.BaseFragment
-import com.utechia.presentation.databinding.FragmentHomeBinding
+import com.utechia.presentation.databinding.FragmentExchangeBinding
 import com.utechia.presentation.databinding.MenuLanguageOptionsBinding
 import com.utechia.presentation.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class ExchangeFragment :
+    BaseFragment<FragmentExchangeBinding>(R.layout.fragment_exchange) {
     private val viewModel: ExchangeViewModel by viewModels()
     private val clickHandler = ClickHandler(this)
     private val exchangeAdapter by lazy { ExchangeAdapter(requireActivity()) }
@@ -107,7 +107,7 @@ class HomeFragment :
         binding.clickHandler = clickHandler
     }
 
-    inner class ClickHandler(fragment: HomeFragment) {
+    inner class ClickHandler(fragment: ExchangeFragment) {
         fun onRetryButtonClicked(view: View) {
             showRetry(false)
             viewModel.fetchExchanges()

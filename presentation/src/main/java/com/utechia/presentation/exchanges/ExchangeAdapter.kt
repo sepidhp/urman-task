@@ -1,8 +1,6 @@
 package com.utechia.presentation.exchanges
 
 import android.app.Activity
-import android.content.Context
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +54,7 @@ class ExchangeAdapter(private val activity: Activity) :
         return ExchangeViewHolder(binding)
     }
 
-    fun setThreeItemInEachScroll(binding: ItemExchangeBinding, view: View) {
+    private fun setThreeItemInEachScroll(binding: ItemExchangeBinding, view: View) {
         val itemWidth = screenWidth / 3
 
         val lp = binding.cnsRoot.layoutParams

@@ -28,10 +28,12 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", "\"" + environments.debug.baseURL + "\""
+            buildConfigField "String", "SOCKET_URL", "\"" + environments.debug.socketUrl + "\""
         }
         release {
             minifyEnabled true
             buildConfigField "String", "BASE_URL", "\"" + environments.release.baseURL + "\""
+            buildConfigField "String", "SOCKET_URL", "\"" + environments.release.socketUrl + "\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -57,11 +59,6 @@ dependencies {
 
     //dependency injection
     implementation "javax.inject:javax.inject:$javaxInjectVersion"
-
-    // io socket
-    implementation ('io.socket:socket.io-client:2.0.0') {
-        exclude group: 'org.json', module: 'json'
-    }
 
     implementation project(':domain')
 }

@@ -1,9 +1,7 @@
 package com.utechia.task.di.module
 
-import android.app.Application
-import android.content.SharedPreferences
 import com.utechia.data.BuildConfig.DEBUG
-import com.utechia.domain.util.Constants
+import com.utechia.presentation.util.TokenProvider
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,8 +13,7 @@ private const val TIMEOUT = 30L
 
 @Singleton
 class BaseHttpClient @Inject constructor(
-    private val context: Application,
-    private val sharedPreferences: SharedPreferences
+    private val tokenProvider: TokenProvider
 ) {
     val okHttpClient = OkHttpClient()
         .newBuilder()
@@ -33,9 +30,8 @@ class BaseHttpClient @Inject constructor(
         .build()
 
     private fun headersInterceptor() = Interceptor { chain ->
-        val token = sharedPreferences.getString(Constants.TOKEN, null)
         val newRequest = chain.request().newBuilder()
-        newRequest.header("Authorization", "Bearer $token")
+        newRequest.header("Authorization", "Bearer ${tokenProvider.getToken()}")
         chain.proceed(newRequest.build())
     }
 }

@@ -1,18 +1,19 @@
 class Environments {
     String baseURL = ""
+    String socketUrl = ""
 }
 
 class EnvironmentItems {
     Environments debug = new Environments()
     Environments release = new Environments()
-
 }
 
 EnvironmentItems environments = new EnvironmentItems()
 
 environments.debug.baseURL = "https://api.dev.buluro.com/"
 environments.release.baseURL = "https://api.dev.buluro.com/"
-
+environments.debug.socketUrl = "https://exchange.dev.buluro.com/"
+environments.release.socketUrl = "https://exchange.dev.buluro.com/"
 
 
 ext.environments = environments

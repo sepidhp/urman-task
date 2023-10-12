@@ -15,6 +15,6 @@
     <string name="soon">YAKINDA!</string>
     <string name="tr">TR</string>
     <string name="en">EN</string>
-    <string name="buy_price_with_value">ALlŞ: <b>%f</b></string>
-    <string name="sell_price_with_value">SATIŞ: <b>%f</b></string>
+    <string name="buy_price_with_value">ALlŞ: <b>%s</b></string>
+    <string name="sell_price_with_value">SATIŞ: <b>%s</b></string>
 </resources>

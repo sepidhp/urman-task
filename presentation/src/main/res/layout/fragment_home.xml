@@ -198,285 +198,297 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cnsHeader" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_sharp_vector" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:paddingTop="16dp"
+            android:fadingEdgeLength="12dp"
+            android:fillViewport="true"
+            android:requiresFadingEdge="vertical"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtJewelery">
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_sharp_vector" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cnsWork"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
-                app:layout_constraintEnd_toStartOf="@+id/txtEquipment"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imgWork"
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/work" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtWork"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/montserrat_light"
-                    android:text="@string/work"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtEquipment"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
-                android:fontFamily="@font/montserrat_light"
-                android:gravity="center|start"
-                android:paddingStart="16dp"
-                android:text="@string/equipment"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cnsWork"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:layout_constraintBottom_toBottomOf="@+id/txtEquipment"
-                app:layout_constraintEnd_toEndOf="@+id/txtEquipment"
-                app:srcCompat="@drawable/equipment" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cnsSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:clipToPadding="false"
-                app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
-                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
-                app:layout_constraintTop_toBottomOf="@id/cnsWork">
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cnsWork"
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
+                    app:layout_constraintEnd_toStartOf="@+id/txtEquipment"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgWork"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/work" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtWork"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/montserrat_light"
+                        android:text="@string/work"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtCurrency"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:id="@+id/txtEquipment"
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
                     android:fontFamily="@font/montserrat_light"
-                    android:text="@string/foreign_currency"
+                    android:gravity="center|start"
+                    android:paddingStart="16dp"
+                    android:text="@string/equipment"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cnsWork"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:layout_width="90dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/doviz_vector"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtCurrency"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtCurrency" />
+                    app:layout_constraintBottom_toBottomOf="@+id/txtEquipment"
+                    app:layout_constraintEnd_toEndOf="@+id/txtEquipment"
+                    app:srcCompat="@drawable/equipment" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvExchanges"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cnsSlider"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:visibility="@{isLoading?View.GONE:View.VISIBLE}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtCurrency"
-                    app:reverseLayout="false" />
-
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="120dp"
-                    android:visibility="@{isLoading?View.VISIBLE:View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrency" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/bg_rect_solid_white_4_round"
-                    android:onClick="@{clickHandler::onRetryButtonClicked}"
-                    android:text="@string/re_try"
-                    android:visibility="@{loadingHasError?View.VISIBLE:View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrency" />
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
+                    android:clipToPadding="false"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
+                    app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                    app:layout_constraintTop_toBottomOf="@id/cnsWork">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtCurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat_light"
+                        android:text="@string/foreign_currency"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cnsFair"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
-                app:layout_constraintEnd_toStartOf="@+id/txtGuide"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/cnsSlider">
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/doviz_vector"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtCurrency"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtCurrency" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvExchanges"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{isLoading?View.GONE:View.VISIBLE}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtCurrency"
+                        app:reverseLayout="false" />
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:indeterminateTint="@color/colorPrimaryDark"
+                        android:visibility="@{isLoading?View.VISIBLE:View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrency" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_rect_solid_white_4_round"
+                        android:onClick="@{clickHandler::onRetryButtonClicked}"
+                        android:text="@string/re_try"
+                        android:visibility="@{loadingHasError?View.VISIBLE:View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrency" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cnsFair"
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
+                    app:layout_constraintEnd_toStartOf="@+id/txtGuide"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                    app:layout_constraintTop_toBottomOf="@+id/cnsSlider">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtFair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/montserrat_light"
+                        android:text="@string/fair"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/imgFair"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintStart_toStartOf="@id/cnsFair"
+                    app:layout_constraintTop_toTopOf="@id/cnsFair"
+                    app:srcCompat="@drawable/fair" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtFair"
+                    android:id="@+id/txtGuide"
+                    android:layout_width="0dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
+                    android:fontFamily="@font/montserrat_light"
+                    android:gravity="center|start"
+                    android:paddingStart="16dp"
+                    android:text="@string/guide"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cnsFair"
+                    app:layout_constraintTop_toBottomOf="@+id/cnsSlider" />
+
+                <ImageView
+                    android:id="@+id/imgGuide"
+                    android:layout_width="86dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtGuide"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtGuide"
+                    app:srcCompat="@drawable/guide" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtMagazine"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_rect_solid_gradient_16_round"
+                    android:fontFamily="@font/montserrat_light"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="@string/magazine"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtRealEstate"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
+                    app:layout_constraintTop_toBottomOf="@+id/imgFair" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRealEstate"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_rect_solid_gradient_grey_16_round"
+                    android:fontFamily="@font/montserrat_light"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="@string/real_estate"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/txtMagazine"
+                    app:layout_constraintTop_toBottomOf="@+id/imgFair" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtSoon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_rect_solid_gradient_4_round"
                     android:fontFamily="@font/montserrat_light"
-                    android:text="@string/fair"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:paddingStart="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/soon"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/txtRealEstate"
+                    app:layout_constraintEnd_toEndOf="@+id/txtRealEstate"
+                    app:layout_constraintStart_toStartOf="@+id/txtRealEstate"
+                    app:layout_constraintTop_toTopOf="@+id/txtRealEstate" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineRight2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineLeft2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/imgFair"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:adjustViewBounds="true"
-                app:layout_constraintStart_toStartOf="@id/cnsFair"
-                app:layout_constraintTop_toTopOf="@id/cnsFair"
-                app:srcCompat="@drawable/fair" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtGuide"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
-                android:fontFamily="@font/montserrat_light"
-                android:gravity="center|start"
-                android:paddingStart="16dp"
-                android:text="@string/guide"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cnsFair"
-                app:layout_constraintTop_toBottomOf="@+id/cnsSlider" />
-
-            <ImageView
-                android:id="@+id/imgGuide"
-                android:layout_width="86dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:adjustViewBounds="true"
-                app:layout_constraintBottom_toBottomOf="@+id/txtGuide"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtGuide"
-                app:srcCompat="@drawable/guide" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtMagazine"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_rect_solid_gradient_16_round"
-                android:fontFamily="@font/montserrat_light"
-                android:gravity="center"
-                android:padding="6dp"
-                android:text="@string/magazine"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/txtRealEstate"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/imgFair" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRealEstate"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_rect_solid_gradient_grey_16_round"
-                android:fontFamily="@font/montserrat_light"
-                android:gravity="center"
-                android:padding="6dp"
-                android:text="@string/real_estate"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineRight2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/txtMagazine"
-                app:layout_constraintTop_toBottomOf="@+id/imgFair" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtSoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_rect_solid_gradient_4_round"
-                android:fontFamily="@font/montserrat_light"
-                android:paddingStart="8dp"
-                android:paddingTop="2dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="2dp"
-                android:text="@string/soon"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtRealEstate"
-                app:layout_constraintEnd_toEndOf="@+id/txtRealEstate"
-                app:layout_constraintStart_toStartOf="@+id/txtRealEstate"
-                app:layout_constraintTop_toTopOf="@+id/txtRealEstate" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineRight2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="16dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineLeft2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="16dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,54 +32,80 @@
             android:layout_height="0dp"
             android:background="@color/whiteColor"
             android:visibility="@{position==size-1?View.INVISIBLE:View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@id/txtSellPrice"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:text="@{exchange.name}"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/vDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/vDivider"
             tools:text="Altin ONS" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtBuyPrice"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
-            android:text="@{@string/buy_price_with_value(exchange.buyPrice)}"
+            android:text="@string/buy_price"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtName"
-            tools:text="ALlŞ: 1.648,09" />
+            tools:text="ALlŞ:" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtSellPrice"
+            android:id="@+id/txtBuyPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/montserrat_bold"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{exchange.buyPrice.toString()}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/vDivider"
+            app:layout_constraintStart_toEndOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            tools:text="1.648,09" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
             android:fontFamily="@font/montserrat_light"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:paddingBottom="12dp"
-            android:singleLine="true"
-            android:text="@{@string/sell_price_with_value(exchange.sellPrice)}"
+            android:text="@string/sell_price"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtBuyPrice"
-            tools:text="SATIŞ: 1.648,31" />
+            tools:text="SATIŞ:" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtSellPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/montserrat_bold"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{exchange.sellPrice.toString()}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/vDivider"
+            app:layout_constraintStart_toEndOf="@id/textView2"
+            app:layout_constraintTop_toBottomOf="@id/txtBuyPrice"
+            tools:text="1.648,31" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

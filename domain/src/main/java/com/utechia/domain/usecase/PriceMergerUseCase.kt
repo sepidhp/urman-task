@@ -1,30 +1,39 @@
 package com.utechia.domain.usecase
 
-import com.google.gson.Gson
 import com.utechia.domain.model.Exchange
-import com.utechia.domain.model.NadirdovizResponse
+import com.utechia.domain.model.ExchangeName
 import com.utechia.domain.model.Price
-import com.utechia.domain.model.PriceResponse
-import com.utechia.domain.util.MapPriceToExchange.Companion.mapData
 import javax.inject.Inject
 import javax.inject.Singleton
-import com.utechia.domain.util.Result
-import org.json.JSONObject
 
 @Singleton
 class PriceMergerUseCase @Inject constructor() {
 
-    operator fun invoke(exchangeList: List<Exchange>, priceList: List<Price>) {
-        mergeData(exchangeList, priceList)
+    operator fun invoke(
+        exchangeNameList: List<ExchangeName>,
+        priceList: List<Price>
+    ): List<Exchange> {
+        return mergeData(exchangeNameList, priceList)
     }
 
-    private fun mergeData(exchangeList: List<Exchange>, priceList: List<Price>) {
-
-        for (exchange in exchangeList) {
-            priceList.find { it.name == exchange.name }?.let {
-                exchange.buyPrice = it.buyPrice
-                exchange.sellPrice = it.sellPrice
+    private fun mergeData(
+        exchangeNameList: List<ExchangeName>,
+        priceList: List<Price>
+    ): List<Exchange> {
+        val exchanges = mutableListOf<Exchange>()
+        for (exchangeName in exchangeNameList) {
+            priceList.find { it.name == exchangeName.name }?.let {
+                exchanges.add(
+                    Exchange(
+                        exchangeName.value,
+                        exchangeName.sortId,
+                        exchangeName.name,
+                        it.buyPrice,
+                        it.sellPrice
+                    )
+                )
             }
         }
+        return exchanges
     }
 }

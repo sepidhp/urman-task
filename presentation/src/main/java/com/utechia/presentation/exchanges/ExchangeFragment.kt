@@ -9,18 +9,19 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.utechia.domain.model.Exchange
+import com.utechia.domain.model.ExchangeName
 import com.utechia.domain.util.HttpErrors
 import com.utechia.domain.util.Result
 import com.utechia.presentation.R
 import com.utechia.presentation.base.BaseFragment
-import com.utechia.presentation.databinding.FragmentHomeBinding
+import com.utechia.presentation.databinding.FragmentExchangeBinding
 import com.utechia.presentation.databinding.MenuLanguageOptionsBinding
 import com.utechia.presentation.util.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class ExchangeFragment :
+    BaseFragment<FragmentExchangeBinding>(R.layout.fragment_exchange) {
     private val viewModel: ExchangeViewModel by viewModels()
     private val clickHandler = ClickHandler(this)
     private val exchangeAdapter by lazy { ExchangeAdapter(requireActivity()) }
@@ -61,7 +62,7 @@ class HomeFragment :
         showLoading(false)
     }
 
-    private fun initExchangeNames(result: Result<List<Exchange>>?) {
+    private fun initExchangeNames(result: Result<List<ExchangeName>>?) {
         if (result is Result.Success) {
             viewModel.listenPriceEvent(result.data)
             viewModel.connectSocket()
@@ -107,7 +108,7 @@ class HomeFragment :
         binding.clickHandler = clickHandler
     }
 
-    inner class ClickHandler(fragment: HomeFragment) {
+    inner class ClickHandler(fragment: ExchangeFragment) {
         fun onRetryButtonClicked(view: View) {
             showRetry(false)
             viewModel.fetchExchanges()

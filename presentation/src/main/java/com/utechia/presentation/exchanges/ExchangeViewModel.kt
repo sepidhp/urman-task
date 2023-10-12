@@ -3,6 +3,7 @@ package com.utechia.presentation.exchanges
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.utechia.domain.model.Exchange
+import com.utechia.domain.model.ExchangeName
 import com.utechia.domain.socket.Event
 import com.utechia.domain.socket.SocketHandler
 import com.utechia.domain.usecase.GetExchangesUseCase
@@ -31,7 +32,7 @@ class ExchangeViewModel @Inject constructor(
 ) : BaseViewModel(dispatchers) {
     private val _token: MutableLiveData<Result<String>> = MutableLiveData()
     private val _socketException: MutableLiveData<Exception> = MutableLiveData()
-    private val _exchangeNames: MutableLiveData<Result<List<Exchange>>> = MutableLiveData()
+    private val _exchangeNames: MutableLiveData<Result<List<ExchangeName>>> = MutableLiveData()
     private val _exchanges: MutableLiveData<List<Exchange>> = MutableLiveData()
 
     init {
@@ -90,21 +91,21 @@ class ExchangeViewModel @Inject constructor(
         socketHandler.disconnect()
     }
 
-    fun listenPriceEvent(exchangeList: List<Exchange>) {
+    fun listenPriceEvent(exchangeNameList: List<ExchangeName>) {
 
         socketHandler.listenEvent(Event.PRICE) { data: Any ->
 
             val prices = priceMapperUseCase(data)
 
             prices.exchangePrices.nadirdoviz?.let {
-                priceMergerUseCase(exchangeList, it.asList())
-                _exchanges.postValue(exchangeList)
+                val exchanges = priceMergerUseCase(exchangeNameList, it.asList())
+                _exchanges.postValue(exchanges)
             }
         }
     }
 
     fun getToken(): LiveData<Result<String>> = _token
     fun getSocketException(): LiveData<Exception> = _socketException
-    fun getExchangeNames(): LiveData<Result<List<Exchange>>> = _exchangeNames
+    fun getExchangeNames(): LiveData<Result<List<ExchangeName>>> = _exchangeNames
     fun getExchanges(): LiveData<List<Exchange>> = _exchanges
 }

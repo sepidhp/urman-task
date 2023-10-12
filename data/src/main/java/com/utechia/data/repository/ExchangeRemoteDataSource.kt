@@ -2,7 +2,7 @@ package com.utechia.data.repository
 
 import com.utechia.data.api.ApiService
 import com.utechia.data.exceptions.NetworkExceptionHandler
-import com.utechia.domain.model.Exchange
+import com.utechia.domain.model.ExchangeName
 import com.utechia.domain.util.Result
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -13,7 +13,7 @@ class ExchangeRemoteDataSource @Inject constructor(
     private val apiExceptionHandler: NetworkExceptionHandler
 ) : ExchangeDataSource {
 
-    override suspend fun getExchanges(): Result<List<Exchange>> {
+    override suspend fun getExchangeNames(): Result<List<ExchangeName>> {
         return try {
             val result = apiService.fetchExchanges()
             Result.Success(result.data.translates.en.toDomain())

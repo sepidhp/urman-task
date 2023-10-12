@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.utechia.domain.model.Exchange
+import com.utechia.domain.model.ExchangeName
 import com.utechia.domain.util.HttpErrors
 import com.utechia.domain.util.Result
 import com.utechia.presentation.R
@@ -61,7 +62,7 @@ class ExchangeFragment :
         showLoading(false)
     }
 
-    private fun initExchangeNames(result: Result<List<Exchange>>?) {
+    private fun initExchangeNames(result: Result<List<ExchangeName>>?) {
         if (result is Result.Success) {
             viewModel.listenPriceEvent(result.data)
             viewModel.connectSocket()

@@ -52,9 +52,10 @@
                 app:srcCompat="@drawable/ic_search" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="@id/imgMan"
@@ -62,7 +63,7 @@
 
             <ImageView
                 android:id="@+id/imgMan"
-                android:layout_width="230dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:adjustViewBounds="true"
@@ -222,6 +223,7 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp">
@@ -292,6 +294,7 @@
                     android:background="@drawable/bg_rect_solid_gradient_16_round"
                     android:clipToPadding="false"
                     app:layout_constraintEnd_toStartOf="@id/guidelineRight2"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/guidelineLeft2"
                     app:layout_constraintTop_toBottomOf="@id/cnsWork">
 
@@ -333,7 +336,7 @@
 
                     <ProgressBar
                         android:layout_width="wrap_content"
-                        android:layout_height="120dp"
+                        android:layout_height="80dp"
                         android:indeterminateTint="@color/colorPrimaryDark"
                         android:visibility="@{isLoading?View.VISIBLE:View.GONE}"
                         app:layout_constraintBottom_toBottomOf="parent"
